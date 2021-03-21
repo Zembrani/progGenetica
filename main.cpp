@@ -8,8 +8,7 @@ double wtime() {
 }
 
 int main(int argc, char const* argv[]) {
-  // FileOperator file;
-  Solution solution;
+  Genetic genetic;
   GetParameters parameters;
   double initialTime, finalTime;
 
@@ -23,22 +22,10 @@ int main(int argc, char const* argv[]) {
   vector <string> terms = parameters.getTerm();
   parameters.print();
 
-  // vector<myMap> data = file.read(file.fileName[numberFile]);
-  // int qtNos = file.getNos();
-
-  // parameters.print(qtNos);
-
-  // Genetic genetic;
-  // genetic.run(data, population, interactions, qtNos, mutationDegree, survival);
-  
-  solution.setFunc(funcs);
-  solution.setTerm(terms);
-
   initialTime = wtime();
-  solution.generate(deep);
+  genetic.run(population, interactions,mutationDegree, survival, deep, funcs, terms, numberFile);
   finalTime = wtime();
 
-  solution.print();
   cout << "Time: " << finalTime - initialTime << endl;
 
   return 0;

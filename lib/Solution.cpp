@@ -29,21 +29,15 @@ struct Solution {
     vector<string> aux;
     bool lastIsFunc = false;
     double item = itemRandom();
-    // int teste;
-
-    cout << "deep = " << deep << endl;
-    cout << "item = " << item << endl;
 
     if (deep <= deepMax) {
       if ((deep == 0 || item > getProbability()) && !(deep == deepMax)) {
-        cout << "Adicionando uma função " << endl;
         // Adiciona os operadores
         int element = elementRandom(funcSet.size());
         nextExpre.push_back(funcSet[element]);
         lastIsFunc = true;
       } else 
         if (deep == deepMax || item < getProbability()) {
-          cout << "Adicionando um termo " << endl;
         // Adiciona elementos utilizados nas operacoes
         int element = elementRandom(termSet.size());
         nextExpre.push_back(termSet[element]);
@@ -52,7 +46,6 @@ struct Solution {
     }
     // Faz a chamada recursiva se o ultimo elemento adicionado for uma funcao
     if (lastIsFunc) {
-      cout << "entrando na recusão " << endl;
       for(int i = 0; i < 2; i++) {
         aux = gerNextExpr(deep+1);
         for (auto&& it : aux) {
@@ -60,7 +53,6 @@ struct Solution {
         }
       }
     }
-
     return nextExpre;
   }
 
@@ -98,6 +90,10 @@ struct Solution {
 
   void setFunc(vector <string> funcs) {
     funcSet = funcs;
+  }
+
+  vector <string> getFuncs() {
+    return funcSet;
   }
 };
 
