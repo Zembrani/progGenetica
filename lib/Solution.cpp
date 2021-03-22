@@ -10,9 +10,7 @@ using namespace std;
 #define SOLUTION
 
 struct Solution {
-  int qtInstances = 0;
-  vector<string> solution;
-  bool wasModified = false;
+  vector <string> solution;
   vector <string> termSet;
   vector <string> funcSet;
   int deepMax;
@@ -77,11 +75,20 @@ struct Solution {
     return distrib(gen);
   }
 
-  void print() {
-    for (auto&& literal : solution) {
+  void print(vector <string> vec) {
+    for (auto&& literal : vec) {
       cout << literal << " ";
     }
      cout << endl;
+  }
+
+  void printAll() {
+    cout << "Solution" << endl;
+    print(solution);
+    cout << "Set de funcoes" << endl;
+    print(funcSet);
+    cout << "Set de termos" << endl;
+    print(termSet);
   }
 
   void setTerm(vector <string> terms) {
